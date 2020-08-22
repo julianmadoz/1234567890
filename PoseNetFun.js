@@ -13,6 +13,7 @@ function loadPoseNet(){
 }
 
 function modelReady() {
+  pN_status = 1
   console.log('Model Loaded!');
 }
 
@@ -37,6 +38,7 @@ function drawKeypoints()  {
 
 //Calcula el angulo con el que gira la cabeza como si fuese un paneo
 function angle(){
+  if(poses.length > 0){
   let p = {}
     p.lx = poses[0].pose.leftEye.x,
     p.ly = poses[0].pose.leftEye.y,
@@ -47,5 +49,5 @@ function angle(){
     textSize(30)
     color('black')
     text('pan: ' + p.pan , 30, 450)
-
+}
 }

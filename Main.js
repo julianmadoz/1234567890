@@ -3,6 +3,7 @@ let webCam
 let poses = []
 let sample
 let start
+let pN_status = 0
 
 // function preload(){
 //   soundFormats('mp3', 'ogg');
@@ -17,7 +18,8 @@ function setup(){
   }
 
 function draw() {
-    image(webCam, 0, 0, 640, 480);
+    if(pN_status == 1){image(webCam, 0, 0, 640, 480)}
     drawKeypoints()
+    angle()
 
   }
