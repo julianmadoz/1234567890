@@ -1,5 +1,4 @@
 //Carga poseNet
-
 function loadPoseNet(){
   pN = ml5.poseNet(webCam,{
     imageScaleFactor: 0.5,
