@@ -2,6 +2,7 @@ let pN
 let webCam
 let poses = []
 let samples = []
+let randomSamples = []
 let start
 
 function preload(){
@@ -24,5 +25,8 @@ function draw() {
     image(webCam, 0, 0, 640, 480);
     drawKeypoints()
 
-    
+    for(let i = 0;i < 3;i++){
+      let miNumero = Math.floor(Math.random() * 8) + 1;
+      samples[miNumero].play()
+    }
   }
