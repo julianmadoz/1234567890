@@ -1,14 +1,20 @@
 //Carga poseNet
+
 function loadPoseNet(){
   pN = ml5.poseNet(webCam,{
     imageScaleFactor: 0.5,
     outputStride: 16,
     minConfidence: 0.4,
     detectionType: 'single'
-  });
+  }, modelReady);
+
   pN.on('pose', function(results) {
     poses = results;
   });
+}
+
+function modelReady() {
+  console.log('Model Loaded!');
 }
 
 //Dibuja puntitos en los keypoints
