@@ -2,7 +2,6 @@ let pN
 let webCam
 let poses
 function setup(){
-  function setup() {
     webCam = createCapture(VIDEO, 640, 480)
     webCam.hide()
     loadPoseNet()
