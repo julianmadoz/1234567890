@@ -15,6 +15,7 @@ function loadPoseNet(){
 //Dibuja puntitos en los keypoints
 function drawKeypoints()  {
   // Loop through all the poses detected
+  print('a')
   for (let i = 0; i < poses.length; i++) {
     // For each pose detected, loop through all the keypoints
     let pose = poses[i].pose;

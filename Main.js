@@ -2,8 +2,7 @@ let pN
 let webCam
 let poses
 function setup(){
-    webCam = createCapture(VIDEO, 640, 480)
-    webCam.hide()
+    webCam = createCapture(VIDEO)
     loadPoseNet()
 
   }
@@ -13,6 +12,3 @@ function draw() {
     drawKeypoints();
     angle()
   }
-
-
-}
