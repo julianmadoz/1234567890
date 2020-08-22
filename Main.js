@@ -19,4 +19,5 @@ function setup(){
 function draw() {
     image(webCam, 0, 0, 640, 480);
     drawKeypoints()
+
   }
