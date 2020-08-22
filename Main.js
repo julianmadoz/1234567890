@@ -4,10 +4,10 @@ let poses
 let sample
 let start
 
-function preload(){
-  soundFormats('mp3', 'ogg');
-  sample = loadSound('audios/ambience_1.mp3');
-}
+// function preload(){
+//   soundFormats('mp3', 'ogg');
+//   sample = loadSound('audios/ambience_1.mp3');
+// }
 
 function setup(){
     webCam = createCapture(VIDEO)
