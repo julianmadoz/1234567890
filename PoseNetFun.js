@@ -5,7 +5,6 @@ function loadPoseNet(){
     outputStride: 16,
     minConfidence: 0.4,
     detectionType: 'single'
-
   });
   pN.on('pose', function(results) {
     poses = results;
@@ -15,10 +14,10 @@ function loadPoseNet(){
 //Dibuja puntitos en los keypoints
 function drawKeypoints()  {
   // Loop through all the poses detected
-  print('a')
   for (let i = 0; i < poses.length; i++) {
     // For each pose detected, loop through all the keypoints
     let pose = poses[i].pose;
+    print(pose)
     for (let j = 0; j < pose.keypoints.length; j++) {
       // A keypoint is an object describing a body part (like rightArm or leftShoulder)
       let keypoint = pose.keypoints[j];
