@@ -21,5 +21,6 @@ function draw() {
     image(webCam, 0, 0, 640, 480);
     try {drawKeypoints()}
     catch(error){console.error()}
+    angle()
 
   }
