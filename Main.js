@@ -9,7 +9,7 @@ let pN_status = 0
 function preload(){
   soundFormats('mp3', 'ogg');
 
-  for(let i = 0;i < 8;i++){
+  for(let i = 0;i < 7;i++){
     samples[i] = loadSound(`audios/${i+1}.mp3`);
   }
 
@@ -20,6 +20,13 @@ function setup(){
     canvas = createCanvas(640,480)
     loadPoseNet()
     webCam.hide()
+    b = createButton('dioooos').hide()
+    for(let i = 0;i < 3;i++){
+      let miNumero = Math.floor(Math.random() * 6) + 1;
+      print(samples[miNumero])
+      samples[miNumero].play()
+
+    }
   }
 
 function draw() {
@@ -27,8 +34,5 @@ function draw() {
     drawKeypoints()
     angle()
 
-    for(let i = 0;i < 3;i++){
-      let miNumero = Math.floor(Math.random() * 8) + 1;
-      samples[miNumero].play()
-    }
+
   }
