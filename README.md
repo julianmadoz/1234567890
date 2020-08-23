@@ -7,5 +7,13 @@ estas parado adentro de un cubo.
 
 ### To do
 * Agregar sonidos random
-* Videos de youtube random
+* Videos de youtube  --> provle
 * Controlar todo eso con posenet
+
+### Decisiones
+* No fetchear videos de youtube porque:
+            * es un re bardo
+            * Tendria que cargar todos los videos al mismo tiempo
+            * El reproductor de yt parece medio dificil de sacar
+            * PUBLICIDADES
+----> solucion: buscar videos y descargarlos. YAFU
