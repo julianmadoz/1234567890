@@ -1,20 +1,19 @@
 //Carga poseNet
 function loadPoseNet(){
   pN = ml5.poseNet(webCam,{
-    imageScaleFactor: 0.5,
+    imageScaleFactor: 0.1,
     outputStride: 16,
-    minConfidence: 0.4,
+    minConfidence: 0.1,
     detectionType: 'single'
   }, modelReady);
-
   pN.on('pose', function(results) {
     poses = results;
   });
-}
 
+}
 function modelReady() {
-  pN_status = 1
-  console.log('Model Loaded!');
+  console.log('Model Loaded!')
+  loop();
 }
 
 //Dibuja puntitos en los keypoints
@@ -46,8 +45,7 @@ function angle(){
     p.ry = poses[0].pose.rightEye.y
     p['atan']= Math.atan((p.ly-p.ry)/(p.lx-p.rx))*180/Math.PI
     p.pan = round(map(p.atan,-50,50,-100,100, true))
-    textSize(30)
-    color('black')
-    text('pan: ' + p.pan , 30, 450)
+    return p.atan
+
 }
 }
