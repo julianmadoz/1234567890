@@ -7,6 +7,7 @@ let start
 let pN_status = 0
 
 function preload(){
+  gapi.load("client");
   soundFormats('mp3', 'ogg');
 
   for(let i = 0;i < 7;i++){
