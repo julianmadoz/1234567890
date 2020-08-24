@@ -7,7 +7,7 @@ function loadPoseNet(){
     outputStride: 16,
     minConfidence: 0.2,
     detectionType: 'single',
-    // quantBytes: 2
+    quantBytes: 4
     },
   modelReady);
 
