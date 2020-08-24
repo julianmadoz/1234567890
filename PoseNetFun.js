@@ -4,9 +4,10 @@ function loadPoseNet(){
     {
     architecture: 'MobileNetV1',
     multiplier: 0.5,
-    outputStride: 100,
+    outputStride: 16,
     minConfidence: 0.2,
-    detectionType: 'single'
+    detectionType: 'single',
+    // quantBytes: 2
     },
   modelReady);
 
@@ -20,7 +21,7 @@ function modelReady() {
 }
 
 //Dibuja puntitos en los keypoints
-function drawKeypoints()  {
+function drawKeypoints(layer)  {
   // Loop through all the poses detected
   for (let i = 0; i < poses.length; i++) {
     // For each pose detected, loop through all the keypoints
@@ -29,10 +30,10 @@ function drawKeypoints()  {
       // A keypoint is an object describing a body part (like rightArm or leftShoulder)
       let keypoint = pose.keypoints[j];
       // Only draw an ellipse is the pose probability is bigger than 0.2
-      if (keypoint.score > 0.2) {
-        fill(255, 0, 0);
-        noStroke();
-        ellipse(keypoint.position.x, keypoint.position.y, 10, 10);
+      if (keypoint.score > 0.1) {
+        layer.fill(255, 0, 0);
+        layer.noStroke();
+        layer.ellipse(keypoint.position.x, keypoint.position.y, 10, 10);
       }
     }
   }

@@ -2,7 +2,7 @@ let pN
 let webCam
 let poses = []
 let samples = []
-let status = 0
+let status = 'init'
 let video
 let playing = false
 let camera
@@ -22,25 +22,32 @@ function preload() {
 }
 
 function setup() {
-  frameRate(20)
+  frameRate(30)
 
-  canvas = createCanvas(windowWidth, windowHeight,WEBGL)
-  camera = createCamera()
-  setCamera(camera)
+  canvas = createCanvas(windowWidth, windowHeight)
+  cube = createGraphics(width, height,WEBGL)
+  gr = createGraphics(640,480)
+  start = createGraphics(500,500)
 
-  b = createButton("start")
-  b.mousePressed(start_playing)
-  slider = createSlider(0,400)
-  slider2 = createSlider(-10,10)
+  // camera = createCamera()
+  // gr.setCamera(camera)
+
+  // slider = createSlider(0,400)
+  //slider2 = createSlider(-200,200)
 
 }
 
 function draw() {
-  camera.lookAt(0, 1, 1)
-  camera.setPosition(0,0,0)
-  camera.pan(slider2.value())
   background(0)
-  cubee()
+  // camera.lookAt(0, 1, 1)
+  // camera.setPosition(0,0,0)
+  // camera.pan(slider2.value())
+
+  magicCube(cube)
+  webCam_layer(gr, width-200 , height-150 ,0.3)
+  if(status == 'init'){
+    start_button(start)
+  }
 
 
 }
