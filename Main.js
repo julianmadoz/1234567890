@@ -2,29 +2,45 @@ let pN
 let webCam
 let poses = []
 let samples = []
-let pN_status = 0
+let status = 0
 let video
 let playing = false
+let camera
 
 
 function preload() {
-  loadAudios()
+  // loadAudios()
+  audio_manager.load_files(8)
   loadvideos()
+  canvas1 = createCanvas(1, 1,WEBGL)
+  webCam = createCapture(VIDEO)
+  webCam.hide()
+  //Canvas y webcam antes de posenet sino no funciona
+  loadPoseNet()
+
 
 }
 
 function setup() {
-  noLoop() //para esperar que cargue el modelo en preload no funciona
-  canvas = createCanvas(640, 480,WEBGL)
-  webCam = createCapture(VIDEO)
-  webCam.hide()
-  loadPoseNet()
+  frameRate(20)
+
+  canvas = createCanvas(windowWidth, windowHeight,WEBGL)
+  camera = createCamera()
+  setCamera(camera)
+
   b = createButton("start")
   b.mousePressed(start_playing)
+  slider = createSlider(0,400)
+  slider2 = createSlider(-10,10)
+
 }
 
 function draw() {
-  background(100)
+  camera.lookAt(0, 1, 1)
+  camera.setPosition(0,0,0)
+  camera.pan(slider2.value())
+  background(0)
   cubee()
+
 
 }

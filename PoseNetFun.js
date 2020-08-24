@@ -1,11 +1,15 @@
 //Carga poseNet
 function loadPoseNet(){
-  pN = ml5.poseNet(webCam,{
-    imageScaleFactor: 0.1,
-    outputStride: 16,
-    minConfidence: 0.1,
+  pN = ml5.poseNet(webCam,
+    {
+    architecture: 'MobileNetV1',
+    multiplier: 0.5,
+    outputStride: 100,
+    minConfidence: 0.2,
     detectionType: 'single'
-  }, modelReady);
+    },
+  modelReady);
+
   pN.on('pose', function(results) {
     poses = results;
   });
@@ -13,7 +17,6 @@ function loadPoseNet(){
 }
 function modelReady() {
   console.log('Model Loaded!')
-  loop();
 }
 
 //Dibuja puntitos en los keypoints
@@ -37,15 +40,22 @@ function drawKeypoints()  {
 
 //Calcula el angulo con el que gira la cabeza como si fuese un paneo
 function angle(){
-  if(poses.length > 0){
   let p = {}
+  p.atan = 0
+  if(poses.length > 0){
     p.lx = poses[0].pose.leftEye.x,
     p.ly = poses[0].pose.leftEye.y,
     p.rx = poses[0].pose.rightEye.x,
     p.ry = poses[0].pose.rightEye.y
     p['atan']= Math.atan((p.ly-p.ry)/(p.lx-p.rx))*180/Math.PI
     p.pan = round(map(p.atan,-50,50,-100,100, true))
-    return p.atan
+  if(isNaN(p.atan)){
+    print('is not a number')
+    return 0
+  }
+  else{
+  return p.atan
+  }
 
 }
 }

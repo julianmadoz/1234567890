@@ -1,5 +1,11 @@
 function start_playing(){
   playVideos()
-  playAudios()
-  playing = true
+  audio_manager.play_all()
+  setTimeout(() => {  playing = true; }, 500);
+}
+
+function check_ready(){
+  noLoop()
+  setTimeout(() => {  loop();  print('listu') }, 250);
+
 }
