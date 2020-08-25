@@ -5,19 +5,36 @@ function check_ready(){
 }
 
 
-function loadvideos(){
-  video = createVideo('videos/5.mp4', loaded)
-  // video.size(200,200)
-  video.hide()
-
-
-  function loaded(){
-    print('Video Ready!')
+function loadvideos(n){
+  for (i=0; i< n; i++){
+    videos[i] = createVideo('videos/'+i+'.mp4')
   }
-
+  video_loaded(n)
 }
 
+  function video_loaded(n){
+    print('Videos are loaded!')
+    for (i=0; i< n; i++){videos[i].hide()}
+  }
+
+
 function playVideos(){
-  video.loop()
-  video.volume(1)
+  for(vid in videos){
+    videos[vid].loop()
+    videos[vid].volume(1)
+    // videos[vid].hide()
+}}
+
+function create_gr(n){
+  for (i=1; i<= n; i++){
+    gr[i] = createGraphics(planeSize,planeSize)
+  }}
+
+function show_gr(number){
+  noStroke()
+  // gr[number].image(videos[number],0,0,planeSize,planeSize)
+  //texture(gr[number])
+  plane(planeSize,planeSize)
+
+
 }
