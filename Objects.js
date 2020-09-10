@@ -62,7 +62,7 @@ class plane_class {
 		// print(gr[this.id])
 		// print(videos[vid])
 		push()
-		specularMaterial( 'white' )
+		// specularMaterial( 'white' )
 		rotateX( this.rX )
 		rotateY( this.rY )
 		rotateZ( this.rZ )

@@ -8,7 +8,7 @@ let camera //camara de la vista en 3D
 let btns = {} // botones
 let videos = {} //videos cargados
 let gr = {} // graphics donde van los videos y son la textura de los planos
-let planeSize = 500 //distancia de planos al centro
+let planeSize = 350 //distancia de planos al centro
 let planes = {} /// contiene todos los planos
 let retroGameFont
 p5.disableFriendlyErrors = true;
@@ -17,6 +17,7 @@ function preload() {
 	loadvideos( 10 )
 	audio_manager.load_files( 8 ) // loadAudios()
 	retroGameFont = loadFont( 'otros/RetroGaming.ttf' )
+	position( -10, -10 )
 
 	anvas1 = createCanvas( 1, 1, WEBGL )
 	// webCam = createCapture(VIDEO)
@@ -75,10 +76,10 @@ function draw() {
 
 	if ( status == 'playing' ) {
 		background( 30, 0, 10 )
-		pointLight( 255, 255, 255, 0, 19, 0 )
-		spotLight( 255, 255, 255, 0, -planeSize / 2, 0, 0, -1, 0 )
+		// pointLight( 255, 255, 255, 0, 19, 0 )
+		// spotLight( 255, 255, 255, 0, -planeSize / 2, 0, 0, -1, 0 )
 		camera.setPosition( 0, 0, 0 )
-		camera.perspective( 240 )
+		camera.perspective( 300, 2 )
 
 		// camera.lookAt(1*sin(map(angle(),-100,100,0,400)), 1*sin(map(mouseY,0,width,0,400)), 1*cos(map(angle(),-100,100,0,400)))
 		camera.lookAt( 1 * sin( map( mouseX, 0, width, 0, 360 ) ), 5 * sin( map( mouseY, 0, width, 0, 400 ) ), 1 * cos( map( mouseX, 0, width, 0, 400 ) ) )
